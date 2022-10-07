@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Type
 
 
 @dataclass
@@ -38,7 +39,7 @@ class Training:
     DUR_IN_M: float = 60
 
     def __init__(self,
-                 action: int,
+                 action: float,
                  duration: float,
                  weight: float,
                  ) -> None:
@@ -128,8 +129,8 @@ class Swimming(Training):
 
 def read_package(workout_type: str, data: list) -> Training:
     code_classes: dict[str, Type[Training]] = {'SWM': Swimming,
-                                         'RUN': Running,
-                                         'WLK': SportsWalking}
+                                               'RUN': Running,
+                                               'WLK': SportsWalking}
     try:
         return code_classes[workout_type](*data)
     except KeyError:
