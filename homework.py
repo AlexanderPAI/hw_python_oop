@@ -127,7 +127,7 @@ class Swimming(Training):
 
 
 def read_package(workout_type: str, data: list) -> Training:
-    code_classes: dict[str, Training] = {'SWM': Swimming,
+    code_classes: dict[str, Type[Training]] = {'SWM': Swimming,
                                          'RUN': Running,
                                          'WLK': SportsWalking}
     try:
