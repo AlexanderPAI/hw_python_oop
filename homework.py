@@ -12,13 +12,11 @@ class InfoMessage:
     # MESSAGE - универсальная константа типа str для метода get_message
     # для вывода сообщения с использованием метода
     # .format и позиционными аргументами:
-    MESSAGE: str = (
-                    'Тип тренировки: {0}; '
+    MESSAGE: str = ('Тип тренировки: {0}; '
                     'Длительность: {1} ч.; '
                     'Дистанция: {2} км; '
                     'Ср. скорость: {3} км/ч; '
-                    'Потрачено ккал: {4}.'
-                   )
+                    'Потрачено ккал: {4}.')
 
     def get_message(self) -> str:
         # Возвращает MESSAGE c использованием метода .format
@@ -26,13 +24,11 @@ class InfoMessage:
         # числовых значений до трех знаков после запятой.
         # Lля единообразия заменил форматирование до трех знаков
         # после запятой при помощи f-строк на метод .format
-        return self.MESSAGE.format(
-                                   self.training_type,
+        return self.MESSAGE.format(self.training_type,
                                    "{:.3f}".format(self.duration),
                                    "{:.3f}".format(self.distance),
                                    "{:.3f}".format(self.speed),
-                                   "{:.3f}".format(self.calories)
-                                  )
+                                   "{:.3f}".format(self.calories))
 
 
 class Training:
@@ -98,8 +94,8 @@ class SportsWalking(Training):
         self.height = height
 
     def get_spent_calories(self) -> float:
-        return ((self.COEFF_CALORIE_1 * self.weight +
-                (self.get_mean_speed() ** self.COEFF_EXPON // self.height)
+        return ((self.COEFF_CALORIE_1 * self.weight
+                + (self.get_mean_speed() ** self.COEFF_EXPON // self.height)
                 * self.COEFF_CALORIE_2 * self.weight)
                 * self.duration * self.DUR_IN_M)
 
